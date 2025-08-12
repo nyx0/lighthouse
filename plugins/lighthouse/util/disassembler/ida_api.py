@@ -272,14 +272,14 @@ class IDACoreAPI(DisassemblerCoreAPI):
         # want
         #
 
-        bg_color_text = get_string_between(html, '.c1 \{ background-color: ', ';')
+        bg_color_text = get_string_between(html, r'.c1 \{ background-color: ', ';')
         if bg_color_text:
             logger.debug(" - Extracted background-color '%s' from line-fg-default!" % bg_color_text)
             return QtGui.QColor(bg_color_text)
 
         # -- IDA 7.5 says c41 is /* line-bg-default */, a.k.a the bg color for
         # disassembly text
-        bg_color_text = get_string_between(html, '.c41 \{ background-color: ', ';')
+        bg_color_text = get_string_between(html, r'.c41 \{ background-color: ', ';')
         if bg_color_text:
             logger.debug(" - Extracted background-color '%s' from line-bg-default!" % bg_color_text)
             return QtGui.QColor(bg_color_text)
